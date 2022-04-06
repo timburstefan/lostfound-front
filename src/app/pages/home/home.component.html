@@ -1,9 +1,30 @@
 <p>
   <mat-toolbar color="accent">
-    <span><a [routerLink]="['/home']" routerLinkActive="router-link-active" >Lost and Found</a></span>
+    <span
+      ><a
+        class="navbar-title"
+        [routerLink]="['/welcome']"
+        routerLinkActive="router-link-active"
+        >Lost and Found</a
+      ></span
+    >
     <span class="toolbar-spacer"></span>
-    <span><a [routerLink]="['/home/register']" routerLinkActive="router-link-active" >Register</a></span>
-    <span><a [routerLink]="['/home/login']" routerLinkActive="router-link-active" >Login</a></span>
+    <span
+      ><a
+        class="navbar-links"
+        [routerLink]="['/register']"
+        routerLinkActive="router-link-active"
+        >Register</a
+      ></span
+    >
+    <span
+      ><a
+        class="navbar-links"
+        [routerLink]="['/login']"
+        routerLinkActive="router-link-active"
+        >Login</a
+      ></span
+    >
   </mat-toolbar>
 </p>
 <router-outlet></router-outlet>
