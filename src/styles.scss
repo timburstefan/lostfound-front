@@ -12,16 +12,18 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
   @include angular-material-theme($alternate-theme);
 }
 html,
-
 body {
   height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-a{
+a {
   text-decoration: none;
 }
 
-.toolbar-spacer{
+.toolbar-spacer {
   flex: 1 1 auto;
+}
+.bg-blue {
+  background-color: rgb(199, 223, 255);
 }

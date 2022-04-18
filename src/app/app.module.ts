@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './utils/material.module';
 import { HomeComponent } from './pages/home/home.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     WelcomeComponent,
   ],
   imports: [
+    ReactiveFormsModule,
+    HttpClientModule,
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
