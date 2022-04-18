@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -6,7 +15,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  constructor() {}
+  registerForm!: FormGroup;
 
-  ngOnInit(): void {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.registerForm = this.fb.group({
+      username: ['', Validators.required],
+      password: [
+        '',
+        [Validators.required, this.matchValidator('confirmPassword', true)],
+      ],
+      confirmPassword: [
+        '',
+        [Validators.required, this.matchValidator('password')],
+      ],
+    });
+  }
+
+  onSubmit() {
+    if (this.registerForm.valid)
+      this.authService.register(this.registerForm.value);
+  }
+
+  matchValidator(matchTo: string, reverse?: boolean): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.parent && reverse) {
+        const c = (control.parent?.controls as any)[matchTo];
+
+        if (c) {
+          c.updateValueAndValidity();
+        }
+        return null;
+      }
+      return !!control.parent &&
+        !!control.parent.value &&
+        control.value === (control.parent?.controls as any)[matchTo].value
+        ? null
+        : { matching: true };
+    };
+  }
 }
