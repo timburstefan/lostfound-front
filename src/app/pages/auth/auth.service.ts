@@ -7,10 +7,13 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
   login(userModel: LoginModel) {
-    this.httpClient.post(environment.API, userModel);
+    return this.httpClient.post(
+      environment.MOCK_API + '/auth/login',
+      userModel
+    );
   }
   register(userModel: RegisterModel) {
-    this.httpClient.post(environment.API, {
+    return this.httpClient.post(environment.API + '/api/auth/signup', {
       username: userModel.username,
       password: userModel.password,
     });

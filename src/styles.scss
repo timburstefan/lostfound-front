@@ -19,6 +19,9 @@ body {
 }
 a {
   text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .toolbar-spacer {
@@ -26,4 +29,8 @@ a {
 }
 .bg-blue {
   background-color: rgb(199, 223, 255);
+}
+.container {
+  margin: auto;
+  max-width: 80%;
 }

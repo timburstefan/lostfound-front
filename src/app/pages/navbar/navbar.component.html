@@ -1,0 +1,47 @@
+<mat-toolbar color="accent">
+  <span
+    ><a
+      *ngIf="isLogged()"
+      class="navbar-title"
+      [routerLink]="['/home']"
+      routerLinkActive="router-link-active"
+      >Lost and Found</a
+    ></span
+  >
+  <span
+    ><a
+      *ngIf="!isLogged()"
+      class="navbar-title"
+      [routerLink]="['/welcome']"
+      routerLinkActive="router-link-active"
+      >Lost and Found</a
+    ></span
+  >
+  <span class="toolbar-spacer"></span>
+  <span *ngIf="!isLogged()"
+    ><a
+      class="navbar-links"
+      [routerLink]="['/register']"
+      routerLinkActive="router-link-active"
+      >Register</a
+    ></span
+  >
+  <span *ngIf="!isLogged()"
+    ><a
+      class="navbar-links"
+      [routerLink]="['/login']"
+      routerLinkActive="router-link-active"
+      >Login</a
+    ></span
+  >
+  <span *ngIf="isLogged()"
+    ><a
+      class="navbar-links"
+      routerLinkActive="router-link-active"
+      (click)="logout()"
+      >Logout</a
+    ></span
+  >
+</mat-toolbar>
+
+<router-outlet></router-outlet>

@@ -5,20 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './utils/material.module';
-import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    NavbarComponent,
     RegisterComponent,
     LoginComponent,
     WelcomeComponent,
+    HomeComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -28,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
