@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginModel } from 'src/app/models/userModels';
+import { UserService } from 'src/app/services/user.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -14,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -25,9 +28,12 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     if (this.loginForm.valid)
-      this.authService.login(this.loginForm.value).subscribe((data) => {
-        localStorage.setItem('user', JSON.stringify(data));
-        this.router.navigate(['/home']);
-      });
+      this.authService
+        .login(this.loginForm.value)
+        .subscribe((data: LoginModel) => {
+          this.userService.currentUser.next(data.username);
+          localStorage.setItem('user', JSON.stringify(data));
+          this.router.navigate(['/home']);
+        });
   }
 }

@@ -4,8 +4,8 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { AuthGuard } from './services/guards/auth.guard';
-import { LoggedGuard } from './services/guards/logged.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { LoggedGuard } from './guards/logged.guard';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
