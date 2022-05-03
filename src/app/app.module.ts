@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LostItemsComponent } from './pages/lost-items/lost-items.component';
+import { FoundItemsComponent } from './pages/found-items/found-items.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { HomeComponent } from './pages/home/home.component';
     LoginComponent,
     WelcomeComponent,
     HomeComponent,
+    LostItemsComponent,
+    FoundItemsComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -30,6 +35,7 @@ import { HomeComponent } from './pages/home/home.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

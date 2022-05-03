@@ -1,0 +1,19 @@
+mat-grid-tile {
+  background: red;
+}
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  margin-bottom: 16px;
+}
+
+.column-label {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+// ::ng-deep mat-card {
+//   background-color: lightgreen !important;
+// }

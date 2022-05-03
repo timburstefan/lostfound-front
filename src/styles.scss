@@ -16,6 +16,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(221, 234, 252);
 }
 a {
   text-decoration: none;
@@ -27,10 +28,15 @@ a {
 .toolbar-spacer {
   flex: 1 1 auto;
 }
-.bg-blue {
-  background-color: rgb(199, 223, 255);
-}
 .container {
   margin: auto;
-  max-width: 80%;
+  max-width: 70%;
+}
+
+.bg-found:hover {
+  background-color: lightgreen;
+}
+
+.bg-lost:hover {
+  background-color: lightcoral;
 }

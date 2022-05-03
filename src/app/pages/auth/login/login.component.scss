@@ -14,3 +14,7 @@ div {
     }
   }
 }
+
+::ng-deep mat-card {
+  background-color: white !important;
+}

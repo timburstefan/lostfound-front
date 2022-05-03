@@ -5,8 +5,9 @@
       class="navbar-title"
       [routerLink]="['/home']"
       routerLinkActive="router-link-active"
-      >Lost and Found</a
-    ></span
+    >
+      Lost and Found
+    </a></span
   >
   <span
     ><a
@@ -14,33 +15,71 @@
       class="navbar-title"
       [routerLink]="['/welcome']"
       routerLinkActive="router-link-active"
-      >Lost and Found</a
-    ></span
+    >
+      Lost and Found
+    </a></span
   >
   <span class="toolbar-spacer"></span>
-  <span *ngIf="!isLogged()"
+  <span
     ><a
-      class="navbar-links"
-      [routerLink]="['/register']"
+      mat-button
+      class="navbar-links bg-lost"
+      [routerLink]="['/lost-items']"
       routerLinkActive="router-link-active"
-      >Register</a
-    ></span
+    >
+      Lost items
+    </a></span
   >
-  <span *ngIf="!isLogged()"
+  <span
     ><a
-      class="navbar-links"
-      [routerLink]="['/login']"
+      mat-button
+      class="navbar-links bg-found"
+      [routerLink]="['/found-items']"
       routerLinkActive="router-link-active"
-      >Login</a
-    ></span
+    >
+      Found items
+    </a></span
   >
   <span *ngIf="isLogged()"
     ><a
+      mat-button
+      class="navbar-links"
+      [routerLink]="['/register']"
+      routerLinkActive="router-link-active"
+    >
+      Create post
+    </a></span
+  >
+  <span *ngIf="!isLogged()"
+    ><a
+      mat-button
+      class="navbar-links"
+      [routerLink]="['/register']"
+      routerLinkActive="router-link-active"
+    >
+      Register
+    </a></span
+  >
+
+  <span *ngIf="!isLogged()"
+    ><a
+      mat-button
+      class="navbar-links"
+      [routerLink]="['/login']"
+      routerLinkActive="router-link-active"
+    >
+      Login
+    </a></span
+  >
+  <span *ngIf="isLogged()"
+    ><a
+      mat-button
       class="navbar-links"
       routerLinkActive="router-link-active"
       (click)="logout()"
-      >Logout</a
-    ></span
+    >
+      Logout
+    </a></span
   >
 </mat-toolbar>
 
