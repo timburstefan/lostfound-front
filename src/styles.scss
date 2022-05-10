@@ -1,4 +1,5 @@
 @import "~@angular/material/theming";
+@import "~maplibre-gl/dist/maplibre-gl.css";
 @include mat-core();
 $my-app-primary: mat-palette($mat-blue, 200, 300, 900);
 $my-app-accent: mat-palette($mat-light-blue, 600, 100, 800);
@@ -15,8 +16,16 @@ html,
 body {
   height: 100%;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: rgb(221, 234, 252);
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 a {
   text-decoration: none;

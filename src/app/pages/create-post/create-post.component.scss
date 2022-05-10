@@ -1,0 +1,25 @@
+mat-card {
+  height: 100%;
+  margin-top: 20px;
+  mat-card-content {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    .form-content {
+      width: 50%;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+
+    .map-content {
+      height: 70vh;
+      width: 50%;
+    }
+
+    .map {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

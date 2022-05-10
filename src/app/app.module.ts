@@ -16,6 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LostItemsComponent } from './pages/lost-items/lost-items.component';
 import { FoundItemsComponent } from './pages/found-items/found-items.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CreatePostComponent } from './pages/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HomeComponent,
     LostItemsComponent,
     FoundItemsComponent,
+    CreatePostComponent,
   ],
   imports: [
     ReactiveFormsModule,
