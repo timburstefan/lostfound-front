@@ -28,12 +28,10 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     if (this.loginForm.valid)
-      this.authService
-        .login(this.loginForm.value)
-        .subscribe((data: LoginModel) => {
-          this.userService.currentUser.next(data.username);
-          localStorage.setItem('user', JSON.stringify(data));
-          this.router.navigate(['/home']);
-        });
+      this.authService.login(this.loginForm.value).subscribe((data) => {
+        // this.userService.currentUser.next(data.username);
+        console.log(data);
+        this.router.navigate(['/home']);
+      });
   }
 }

@@ -6,7 +6,7 @@ export class LoggedGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate() {
-    if (localStorage.getItem('user')) {
+    if (localStorage.getItem('currentUserToken')) {
       return true;
     }
     this.router.navigate(['/welcome']);

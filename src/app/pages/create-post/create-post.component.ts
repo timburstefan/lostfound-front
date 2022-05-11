@@ -33,7 +33,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.createPostForm = this.fb.group({
       selectedValue: ['', Validators.required],
-      address: '',
+      name: '',
       age: '',
       // breed:''
       contacts: '',

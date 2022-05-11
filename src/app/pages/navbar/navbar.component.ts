@@ -10,10 +10,10 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router) {}
 
   isLogged() {
-    return localStorage.getItem('user');
+    return localStorage.getItem('currentUserToken');
   }
   logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('currentUserToken');
     this.router.navigate(['/welcome']);
   }
   ngOnInit(): void {}

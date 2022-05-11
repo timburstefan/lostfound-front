@@ -21,6 +21,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
+      firstName: '',
+      lastName: '',
+      email: '',
       username: ['', Validators.required],
       password: [
         '',
@@ -35,7 +38,10 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid)
-      this.authService.register(this.registerForm.value);
+      this.authService
+        .register(this.registerForm.value)
+        .subscribe((res) => console.log(res));
+    // console.log(this.registerForm.value);
   }
 
   matchValidator(matchTo: string, reverse?: boolean): ValidatorFn {
