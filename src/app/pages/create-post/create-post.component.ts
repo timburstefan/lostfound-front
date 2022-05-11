@@ -22,15 +22,17 @@ import {
   styleUrls: ['./create-post.component.scss'],
 })
 export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('map') mapContainer!: ElementRef<HTMLElement>;
   createPostForm!: FormGroup;
   map!: Map;
-  constructor(private fb: FormBuilder) {}
   marker!: Marker;
-  coordinates: LngLat | undefined;
-  @ViewChild('map')
-  private mapContainer!: ElementRef<HTMLElement>;
+  coordinates = new LngLat(0, 0);
+  postTypes = ['Lost', 'Found'];
+  constructor(private fb: FormBuilder) {}
+
   ngOnInit(): void {
     this.createPostForm = this.fb.group({
+      selectedValue: ['', Validators.required],
       address: '',
       age: '',
       // breed:''
@@ -68,7 +70,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onSubmit() {
     console.log(this.createPostForm.value);
-    console.log(this.coordinates);
+    // console.log(this.coordinates);
   }
   public addNewMarker(
     lngLat: maplibregl.LngLatLike,

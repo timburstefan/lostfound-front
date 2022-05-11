@@ -6,15 +6,16 @@ mat-card {
     flex-direction: row;
     height: 100%;
     .form-content {
-      width: 50%;
+      width: 40%;
       display: flex;
       justify-content: flex-start;
       flex-direction: column;
     }
 
     .map-content {
+      padding-left: 20px;
       height: 70vh;
-      width: 50%;
+      width: 60%;
     }
 
     .map {

@@ -6,6 +6,18 @@
       <mat-card-content>
         <div class="form-content">
           <mat-form-field appearance="outline" hideRequiredMarker="true">
+            <mat-label>Post Type</mat-label>
+            <mat-select formControlName="selectedValue">
+              <mat-option
+                *ngFor="let type of postTypes"
+                [value]="type.toLowerCase()"
+              >
+                {{ type }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" hideRequiredMarker="true">
             <mat-label for="address">Address</mat-label>
             <input matInput type="text" formControlName="address"
           /></mat-form-field>
@@ -29,6 +41,12 @@
             <mat-label for="reward">Reward</mat-label>
             <input matInput type="text" formControlName="reward"
           /></mat-form-field>
+
+          <h3>Location:</h3>
+          <p>
+            Latitude: {{ coordinates.lng.toFixed(3) }} Longitude:
+            {{ coordinates.lat.toFixed(3) }}
+          </p>
           <button mat-raised-button color="accent" type="submit">Submit</button>
         </div>
 
