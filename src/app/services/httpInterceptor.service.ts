@@ -5,9 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { AuthState } from '../../store/auth.state';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

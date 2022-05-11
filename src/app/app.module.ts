@@ -9,14 +9,14 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LostItemsComponent } from './pages/lost-items/lost-items.component';
 import { FoundItemsComponent } from './pages/found-items/found-items.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
+import { AuthInterceptor } from './services/httpInterceptor.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,13 @@ import { CreatePostComponent } from './pages/create-post/create-post.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
   ],
-  providers: [CookieService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

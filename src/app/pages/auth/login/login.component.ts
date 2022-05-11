@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/userModels';
 import { UserService } from 'src/app/services/user.service';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid)
       this.authService.login(this.loginForm.value).subscribe((data) => {
-        // this.userService.currentUser.next(data.username);
         console.log(data);
         this.router.navigate(['/home']);
       });

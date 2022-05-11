@@ -7,12 +7,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  currentUser: string = '';
-  constructor(private userService: UserService) {
-    this.userService.currentUser.subscribe(
-      (username) => (this.currentUser = username)
-    );
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 }

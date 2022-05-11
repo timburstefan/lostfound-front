@@ -8,13 +8,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  LngLat,
-  LngLatLike,
-  Map,
-  Marker,
-  NavigationControl,
-} from 'maplibre-gl';
+import { LngLat, Map, Marker, NavigationControl } from 'maplibre-gl';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -28,16 +23,14 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   marker!: Marker;
   coordinates = new LngLat(0, 0);
   postTypes = ['Lost', 'Found'];
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private postService: PostService) {}
 
   ngOnInit(): void {
     this.createPostForm = this.fb.group({
       selectedValue: ['', Validators.required],
       name: '',
       age: '',
-      // breed:''
       contacts: '',
-      // createdDate:'',
       details: '',
       reward: '',
     });
@@ -71,6 +64,9 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   onSubmit() {
     console.log(this.createPostForm.value);
     // console.log(this.coordinates);
+    this.postService
+      .createPost(this.createPostForm.value)
+      .subscribe((data) => console.log(data));
   }
   public addNewMarker(
     lngLat: maplibregl.LngLatLike,
