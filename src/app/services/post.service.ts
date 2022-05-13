@@ -11,11 +11,13 @@ export class PostService {
     formData.append('type', post.selectedValue);
     formData.append('name', post.name);
     formData.append('details', post.details);
+    formData.append('contacts', post.contacts);
+    formData.append('reward', post.reward);
 
     // if (post.image) {
     //   formData.append('image', post.image);
     // }
-    
+
     return this.http.post(environment.API + '/api/posts/createPost', formData);
   }
 }
