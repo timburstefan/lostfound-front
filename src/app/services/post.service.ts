@@ -4,7 +4,9 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
+  file: File | undefined;
   constructor(private http: HttpClient) {}
+
   createPost(post: any) {
     // create form data
     const formData = new FormData();
@@ -13,7 +15,7 @@ export class PostService {
     formData.append('details', post.details);
     formData.append('contacts', post.contacts);
     formData.append('reward', post.reward);
-
+    formData.append('image', this.file!);
     // if (post.image) {
     //   formData.append('image', post.image);
     // }
