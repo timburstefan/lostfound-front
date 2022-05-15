@@ -48,8 +48,8 @@
 
           <h3>Location:</h3>
           <p>
-            Latitude: {{ coordinates.lng.toFixed(3) }} Longitude:
-            {{ coordinates.lat.toFixed(3) }}
+            Latitude: {{ coordinates.lat.toFixed(3) }} Longitude:
+            {{ coordinates.lng.toFixed(3) }}
           </p>
           <div>
             <h3>Post Image:</h3>
@@ -57,7 +57,7 @@
               style="display: none"
               type="file"
               class="file-input"
-              [accept]="requiredFileType"
+              accept="image/png, image/jpeg"
               (change)="onFileSelected($event)"
               #fileUpload
             />
@@ -67,6 +67,7 @@
 
               <button
                 mat-mini-fab
+                type="button"
                 color="primary"
                 class="upload-btn"
                 (click)="fileUpload.click()"
@@ -75,23 +76,6 @@
               </button>
             </div>
             <br />
-            <!-- 
-            <div class="progress">
-              <mat-progress-bar
-                class="progress-bar"
-                mode="determinate"
-                [value]="uploadProgress"
-                *ngIf="uploadProgress"
-              >
-              </mat-progress-bar>
-
-              <mat-icon
-                class="cancel-upload"
-                (click)="cancelUpload()"
-                *ngIf="uploadProgress"
-                >delete_forever</mat-icon
-              >
-            </div> -->
           </div>
           <button mat-raised-button color="accent" type="submit">Submit</button>
         </div>

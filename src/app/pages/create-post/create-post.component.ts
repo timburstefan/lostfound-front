@@ -50,6 +50,8 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
       contacts: '',
       details: '',
       reward: '',
+      lat: 0,
+      lng: 0,
     });
   }
   ngAfterViewInit() {
@@ -79,6 +81,10 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onSubmit() {
+    this.createPostForm.patchValue({
+      lat: this.coordinates.lat,
+      lng: this.coordinates.lng,
+    });
     this.postService.createPost(this.createPostForm.value).subscribe(
       () => {
         this.generalService.openSnackBar('Post created');

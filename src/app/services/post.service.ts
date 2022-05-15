@@ -15,10 +15,10 @@ export class PostService {
     formData.append('details', post.details);
     formData.append('contacts', post.contacts);
     formData.append('reward', post.reward);
-    formData.append('image', this.file!);
-    // if (post.image) {
-    //   formData.append('image', post.image);
-    // }
+    formData.append('latitude', post.lat),
+      formData.append('longitude', post.lng);
+
+    if (this.file) formData.append('image', this.file);
 
     return this.http.post(environment.API + '/api/posts/createPost', formData);
   }
