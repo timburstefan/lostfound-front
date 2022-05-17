@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { LoginModel, RegisterModel } from 'src/app/models/userModels';
+import { LoginModel, RegisterModel } from 'src/app/models/models';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })

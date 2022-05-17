@@ -17,6 +17,7 @@ import { FoundItemsComponent } from './pages/found-items/found-items.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { AuthInterceptor } from './services/httpInterceptor.service';
+import { PostDetailsComponent } from './pages/post-details/post-details.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AuthInterceptor } from './services/httpInterceptor.service';
     LostItemsComponent,
     FoundItemsComponent,
     CreatePostComponent,
+    PostDetailsComponent,
   ],
   imports: [
     ReactiveFormsModule,

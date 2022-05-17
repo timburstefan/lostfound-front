@@ -1,0 +1,20 @@
+<div class="container">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Post details</mat-card-title>
+    <mat-card-content>
+      <div class="post-content">
+        <div class="image-container">
+          <img [src]="imageUrl" alt="" />
+        </div>
+
+        <div class="post-container">
+          <h1>{{ postData.name }}</h1>
+          <p>{{ postData.details }}</p>
+        </div>
+      </div>
+      <div class="map-content">
+        <div class="map" #map></div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

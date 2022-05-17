@@ -1,5 +1,6 @@
 <div class="container">
   <h1>Lost Items</h1>
+
   <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       <div
@@ -8,17 +9,22 @@
         fxFlex.sm="33%"
         *ngFor="let item of lostItems"
       >
-        <mat-card class="mat-elevation-z4">
-          <img mat-card-image src="./../assets/item.jpg" />
+        <mat-card
+          class="mat-elevation-z4"
+          [routerLink]="['/post', item.post.post_uuid]"
+        >
+          <img
+            mat-card-image
+            [src]="item.post.image ? item.post.image : 'assets/no_IMAGE.png'"
+            height="300px"
+            width="100px"
+            alt="no data"
+          />
 
-          <mat-card-title> {{ item.title }}</mat-card-title>
+          <mat-card-title> {{ item.post.name }}</mat-card-title>
           <mat-card-content>
-            <p>{{ item.description }}</p>
+            <p>{{ item.post.details }}</p>
           </mat-card-content>
-          <!-- <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions> -->
         </mat-card>
       </div>
     </div>

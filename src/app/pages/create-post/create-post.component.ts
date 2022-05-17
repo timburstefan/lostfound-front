@@ -25,7 +25,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   createPostForm!: FormGroup;
   map!: Map;
   marker!: Marker;
-  coordinates = new LngLat(0, 0);
+  coordinates!: LngLat;
   postTypes = ['Lost', 'Found'];
 
   @Input()

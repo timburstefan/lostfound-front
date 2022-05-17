@@ -22,11 +22,6 @@
             <input matInput type="text" formControlName="name"
           /></mat-form-field>
 
-          <!-- <mat-form-field appearance="outline" hideRequiredMarker="true">
-            <mat-label for="age">Age</mat-label>
-            <input matInput type="text" formControlName="age"
-          /></mat-form-field> -->
-
           <mat-form-field appearance="outline" hideRequiredMarker="true">
             <mat-label for="contacts">Contacts</mat-label>
             <input matInput type="text" formControlName="contacts"
@@ -47,7 +42,7 @@
           /></mat-form-field>
 
           <h3>Location:</h3>
-          <p>
+          <p *ngIf="coordinates">
             Latitude: {{ coordinates.lat.toFixed(3) }} Longitude:
             {{ coordinates.lng.toFixed(3) }}
           </p>

@@ -1,5 +1,5 @@
 import { LngLat } from 'maplibre-gl';
-import { FoundItems } from 'src/app/models/userModels';
+import { FoundItems } from 'src/app/models/models';
 
 export const foundItems: FoundItems[] = [
   {
