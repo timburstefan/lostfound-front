@@ -44,7 +44,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.createPostForm = this.fb.group({
-      selectedValue: ['', Validators.required],
+      type: ['', Validators.required],
       name: '',
       age: '',
       contacts: '',
@@ -70,6 +70,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     this.map?.on('click', (event) => {
       if (this.marker == undefined) {
         this.marker = this.addNewMarker(event.lngLat, { className: 'marker' });
+        this.coordinates = event.lngLat;
         this.marker.on('dragend', () => {
           this.coordinates = this.marker.getLngLat();
           console.log(this.coordinates);

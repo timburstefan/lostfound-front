@@ -7,7 +7,7 @@
         <div class="form-content">
           <mat-form-field appearance="outline" hideRequiredMarker="true">
             <mat-label>Post Type</mat-label>
-            <mat-select formControlName="selectedValue">
+            <mat-select formControlName="type">
               <mat-option
                 *ngFor="let type of postTypes"
                 [value]="type.toLowerCase()"

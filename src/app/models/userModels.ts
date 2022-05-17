@@ -14,6 +14,16 @@ export interface RegisterModel {
   confirmPassword: string;
 }
 
+export interface PostModel {
+  type: string;
+  name: string;
+  contacts: string;
+  details: string;
+  reward: string;
+  lat: number;
+  long: number;
+}
+
 export interface FoundItems {
   title: string;
   description: string;

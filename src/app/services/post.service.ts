@@ -10,7 +10,7 @@ export class PostService {
   createPost(post: any) {
     // create form data
     const formData = new FormData();
-    formData.append('type', post.selectedValue);
+    formData.append('type', post.type);
     formData.append('name', post.name);
     formData.append('details', post.details);
     formData.append('contacts', post.contacts);
