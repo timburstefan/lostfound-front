@@ -3,18 +3,81 @@
     <mat-card-title>Post details</mat-card-title>
     <mat-card-content>
       <div class="post-content">
-        <div class="image-container">
+        <mat-card *ngIf="imageUrl" class="image-container mat-elevation-z8">
           <img [src]="imageUrl" alt="" />
-        </div>
+        </mat-card>
 
-        <div class="post-container">
-          <h1>{{ postData.name }}</h1>
+        <mat-card class="post-container mat-elevation-z8">
+          <h2>{{ postData.name }}</h2>
+          <h3>Type: {{ postData.type }}</h3>
           <p>{{ postData.details }}</p>
-        </div>
+        </mat-card>
       </div>
       <div class="map-content">
         <div class="map" #map></div>
       </div>
     </mat-card-content>
   </mat-card>
+
+  <h1 *ngIf="matchingPosts.length > 0">Matching Posts</h1>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div
+      fxFlex="25%"
+      fxFlex.xs="100%"
+      fxFlex.sm="33%"
+      *ngFor="let item of matchingPosts"
+    >
+      <mat-card
+        class="mat-elevation-z4"
+        [routerLink]="['/post', item.post.post_uuid]"
+      >
+        <img
+          mat-card-image
+          [src]="item.post.image ? item.post.image : 'assets/no_IMAGE.png'"
+          height="250px"
+          width="100px"
+          alt="no data"
+        />
+
+        <mat-card-title> {{ item.post.name }}</mat-card-title>
+        <mat-card-content class="matched-posts">
+          <p>{{ item.post.details }}</p>
+          <br />
+          <p>{{ item.numberIntersectedKeywords }}</p>
+
+          <p>{{ item.post.type }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <h1 *ngIf="nearPosts.length > 0">Near Posts</h1>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div
+      fxFlex="25%"
+      fxFlex.xs="100%"
+      fxFlex.sm="33%"
+      *ngFor="let item of nearPosts"
+    >
+      <mat-card
+        class="mat-elevation-z4"
+        [routerLink]="['/post', item.post.post_uuid]"
+      >
+        <img
+          mat-card-image
+          [src]="item.post.image ? item.post.image : 'assets/no_IMAGE.png'"
+          height="250px"
+          width="100px"
+          alt="no data"
+        />
+
+        <mat-card-title> {{ item.post.name }}</mat-card-title>
+        <mat-card-content class="matched-posts">
+          <p>{{ item.post.details }}</p>
+          <br />
+          <p>{{ item.distance }}</p>
+          <p>{{ item.post.type }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>

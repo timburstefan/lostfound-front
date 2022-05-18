@@ -1,6 +1,7 @@
 mat-card {
   height: 100%;
   margin-top: 20px;
+  margin: 8px;
   mat-card-content {
     display: flex;
     flex-direction: row;
@@ -10,9 +11,16 @@ mat-card {
       display: flex;
       justify-content: flex-start;
       flex-direction: column;
-      img {
-        object-fit: cover;
-        max-width: 80%;
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        img {
+          object-fit: cover !important;
+          height: 40vh;
+          width: 100%;
+        }
       }
       .post-container {
       }
@@ -27,7 +35,29 @@ mat-card {
     .map {
       width: 100%;
       height: 100%;
-      background-color: aqua;
     }
   }
+}
+h1 {
+  margin: 16px;
+}
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  margin-bottom: 16px;
+}
+
+.column-label {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+img {
+  object-fit: cover;
+}
+
+mat-card:hover {
+  cursor: pointer;
 }

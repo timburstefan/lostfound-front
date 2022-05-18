@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LngLat, Map, Marker, NavigationControl } from 'maplibre-gl';
-import { finalize, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { GeneralServce } from 'src/app/services/general.service';
 import { PostService } from 'src/app/services/post.service';
 
