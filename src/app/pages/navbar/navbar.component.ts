@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   constructor(private router: Router) {}
 
   isLogged() {
@@ -16,5 +16,4 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('currentUserToken');
     this.router.navigate(['/welcome']);
   }
-  ngOnInit(): void {}
 }

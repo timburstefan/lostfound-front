@@ -89,6 +89,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     this.postService.createPost(this.createPostForm.value).subscribe(
       () => {
         this.generalService.openSnackBar('Post created');
+        location.reload();
       },
       () => {
         this.generalService.openSnackBar('Error creating post');

@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import { LngLat, Map, Marker, NavigationControl } from 'maplibre-gl';
@@ -9,7 +15,7 @@ import { PostModel } from 'src/app/models/models';
   templateUrl: './post-details.component.html',
   styleUrls: ['./post-details.component.scss'],
 })
-export class PostDetailsComponent implements OnInit {
+export class PostDetailsComponent implements OnInit, AfterViewInit {
   @ViewChild('map') mapContainer!: ElementRef<HTMLElement>;
   map!: Map;
   imageUrl = '';
@@ -91,6 +97,8 @@ export class PostDetailsComponent implements OnInit {
     this.postData.contacts = '';
     this.postData.details = '';
     this.postData.reward = '';
+    this.postData.status = '';
+    this.postData.createdDate = '';
   }
   setData(data: any) {
     this.imageUrl = data.post.image;
@@ -99,5 +107,7 @@ export class PostDetailsComponent implements OnInit {
     this.postData.contacts = data.post.contacts;
     this.postData.details = data.post.details;
     this.postData.reward = data.post.reward;
+    this.postData.status = data.post.status;
+    this.postData.createdDate = data.post.createdDate;
   }
 }

@@ -36,7 +36,11 @@
             ></textarea>
           </mat-form-field>
 
-          <mat-form-field appearance="outline" hideRequiredMarker="true">
+          <mat-form-field
+            *ngIf="createPostForm.value.type == 'lost'"
+            appearance="outline"
+            hideRequiredMarker="true"
+          >
             <mat-label for="reward">Reward</mat-label>
             <input matInput type="text" formControlName="reward"
           /></mat-form-field>

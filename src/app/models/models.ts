@@ -25,6 +25,7 @@ export interface PostModel {
   lat?: number;
   long?: number;
   user?: UserModel;
+  status?: string;
 }
 
 export interface FoundItems {

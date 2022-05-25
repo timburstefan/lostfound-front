@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card class="mat-elevation-z8">
+  <mat-card class="mat-elevation-z8 card-details">
     <mat-card-title>Post details</mat-card-title>
     <mat-card-content>
       <div class="post-content">
@@ -8,9 +8,15 @@
         </mat-card>
 
         <mat-card class="post-container mat-elevation-z8">
-          <h2>{{ postData.name }}</h2>
+          <h2>Post Name: {{ postData.name }}</h2>
           <h3>Type: {{ postData.type }}</h3>
-          <p>{{ postData.details }}</p>
+          <h3 *ngIf="postData.type === 'lost'">
+            Reward: {{ postData.reward }}
+          </h3>
+          <h3>Status: {{ postData.status }}</h3>
+          <h3>Contacts: {{ postData.contacts }}</h3>
+          <h3>Created Date: {{ postData.createdDate | date: "long" }}</h3>
+          <h3>Details: {{ postData.details }}</h3>
         </mat-card>
       </div>
       <div class="map-content">
@@ -18,66 +24,71 @@
       </div>
     </mat-card-content>
   </mat-card>
-
-  <h1 *ngIf="matchingPosts.length > 0">Matching Posts</h1>
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div
-      fxFlex="25%"
-      fxFlex.xs="100%"
-      fxFlex.sm="33%"
-      *ngFor="let item of matchingPosts"
-    >
-      <mat-card
-        class="mat-elevation-z4"
-        [routerLink]="['/post', item.post.post_uuid]"
+  <div id="posts">
+    <h1 *ngIf="matchingPosts.length > 0">Matching Posts</h1>
+    <mat-divider *ngIf="matchingPosts.length > 0"></mat-divider>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="33%"
+        *ngFor="let item of matchingPosts"
       >
-        <img
-          mat-card-image
-          [src]="item.post.image ? item.post.image : 'assets/no_IMAGE.png'"
-          height="250px"
-          width="100px"
-          alt="no data"
-        />
+        <mat-card
+          class="mat-elevation-z4"
+          [routerLink]="['/post', item.post.post_uuid]"
+        >
+          <img
+            mat-card-image
+            [src]="item.post.image ? item.post.image : 'assets/no_IMAGE.png'"
+            height="250px"
+            width="100px"
+            alt="no data"
+          />
 
-        <mat-card-title> {{ item.post.name }}</mat-card-title>
-        <mat-card-content class="matched-posts">
-          <p>{{ item.post.details }}</p>
-          <br />
-          <p>{{ item.numberIntersectedKeywords }}</p>
-
-          <p>{{ item.post.type }}</p>
-        </mat-card-content>
-      </mat-card>
+          <mat-card-title> {{ item.post.name }}</mat-card-title>
+          <mat-card-content>
+            <p>{{ item.post.details }}</p>
+            <p>
+              Nr of intersected keywords:{{ item.numberIntersectedKeywords }}
+            </p>
+            <p>Type: {{ item.post.type }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
   </div>
-  <h1 *ngIf="nearPosts.length > 0">Near Posts</h1>
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div
-      fxFlex="25%"
-      fxFlex.xs="100%"
-      fxFlex.sm="33%"
-      *ngFor="let item of nearPosts"
-    >
-      <mat-card
-        class="mat-elevation-z4"
-        [routerLink]="['/post', item.post.post_uuid]"
+  <div id="posts">
+    <h1 *ngIf="nearPosts.length > 0">Near Posts</h1>
+    <mat-divider *ngIf="nearPosts.length > 0" id="post-divider"></mat-divider>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="33%"
+        *ngFor="let item of nearPosts"
       >
-        <img
-          mat-card-image
-          [src]="item.post.image ? item.post.image : 'assets/no_IMAGE.png'"
-          height="250px"
-          width="100px"
-          alt="no data"
-        />
+        <mat-card
+          id="post-details"
+          class="mat-elevation-z4"
+          [routerLink]="['/post', item.post.post_uuid]"
+        >
+          <img
+            mat-card-image
+            [src]="item.post.image ? item.post.image : 'assets/no_IMAGE.png'"
+            height="250px"
+            width="100px"
+            alt="no data"
+          />
 
-        <mat-card-title> {{ item.post.name }}</mat-card-title>
-        <mat-card-content class="matched-posts">
-          <p>{{ item.post.details }}</p>
-          <br />
-          <p>{{ item.distance }}</p>
-          <p>{{ item.post.type }}</p>
-        </mat-card-content>
-      </mat-card>
+          <mat-card-title> {{ item.post.name }}</mat-card-title>
+          <mat-card-content>
+            <p>{{ item.post.details }}</p>
+            <p>Distance: {{ item.distance }}</p>
+            <p>Type:{{ item.post.type }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>

@@ -61,3 +61,18 @@ img {
 mat-card:hover {
   cursor: pointer;
 }
+
+#posts {
+  h1 {
+    margin-bottom: 0px;
+  }
+  .mat-divider {
+    border-top-width: 2px;
+  }
+  mat-card {
+    height: fit-content !important;
+    mat-card-content {
+      display: block !important;
+    }
+  }
+}
