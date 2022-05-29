@@ -32,4 +32,11 @@ export class PostService {
   getPostById(id: string) {
     return this.http.get(environment.API + '/api/posts/getPost?uuid=' + id);
   }
+
+  getPostLocation(latitude: number, longitude: number) {
+    return this.http.get(
+      environment.NOMINATIM_API +
+        `/reverse?format=geocodejson&lat=${latitude}&lon=${longitude}`
+    );
+  }
 }

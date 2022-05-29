@@ -1,6 +1,5 @@
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   ElementRef,
@@ -27,6 +26,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   marker!: Marker;
   coordinates!: LngLat;
   postTypes = ['Lost', 'Found'];
+  markerLocation: string = '';
 
   @Input()
   requiredFileType: string | undefined;
@@ -71,8 +71,10 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.marker == undefined) {
         this.marker = this.addNewMarker(event.lngLat, { className: 'marker' });
         this.coordinates = event.lngLat;
+        this.getLocationByLatLong(this.coordinates.lat, this.coordinates.lng);
         this.marker.on('dragend', () => {
           this.coordinates = this.marker.getLngLat();
+          this.getLocationByLatLong(this.coordinates.lat, this.coordinates.lng);
           console.log(this.coordinates);
         });
         this.marker.on('click', () => this.marker.remove());
@@ -132,6 +134,14 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   reset() {
     this.uploadProgress = null;
     this.uploadSub = null;
+  }
+  getLocationByLatLong(latitude: number, longitude: number) {
+    this.postService
+      .getPostLocation(latitude, longitude)
+      .subscribe(
+        (data: any) =>
+          (this.markerLocation = data.features[0].properties.geocoding.label)
+      );
   }
 
   ngOnDestroy() {

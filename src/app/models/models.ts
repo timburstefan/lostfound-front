@@ -26,6 +26,8 @@ export interface PostModel {
   long?: number;
   user?: UserModel;
   status?: string;
+  post_uuid?: string;
+  image?: string;
 }
 
 export interface FoundItems {

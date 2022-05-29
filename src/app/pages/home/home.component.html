@@ -1,3 +1,66 @@
 <div class="container">
-  <h1>Welcome to Lost and Found</h1>
+  <div class="main-title">
+    <div id="welcome">Welcome</div>
+    <br />
+    <div>to Lost and Found Page</div>
+  </div>
+  <div id="recent-lost">
+    <h1>Recent found items</h1>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div
+        fxFlex="20%"
+        fxFlex.xs="100%"
+        fxFlex.sm="33%"
+        *ngFor="let item of recentFound"
+      >
+        <mat-card
+          class="mat-elevation-z4"
+          [routerLink]="['/post', item.post_uuid]"
+        >
+          <img
+            mat-card-image
+            [src]="item.image ? item.image : 'assets/no_IMAGE.png'"
+            height="250px"
+            width="100px"
+            alt="no data"
+          />
+
+          <mat-card-title> {{ item.name }}</mat-card-title>
+          <mat-card-content>
+            <p>{{ item.details }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div id="recent-found">
+    <h1>Recent lost items</h1>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div
+        fxFlex="20%"
+        fxFlex.xs="100%"
+        fxFlex.sm="33%"
+        *ngFor="let item of recentLost"
+      >
+        <mat-card
+          class="mat-elevation-z4"
+          [routerLink]="['/post', item.post_uuid]"
+        >
+          <img
+            mat-card-image
+            [src]="item.image ? item.image : 'assets/no_IMAGE.png'"
+            height="250px"
+            width="100px"
+            alt="no data"
+          />
+
+          <mat-card-title> {{ item.name }}</mat-card-title>
+          <mat-card-content>
+            <p>{{ item.details }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </div>
