@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { PostModel } from '../models/models';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
@@ -37,6 +38,11 @@ export class PostService {
     return this.http.get(
       environment.NOMINATIM_API +
         `/reverse?format=geocodejson&lat=${latitude}&lon=${longitude}`
+    );
+  }
+  deletePost(id: string) {
+    return this.http.delete(
+      environment.API + '/api/posts/deletePost?uuid=' + id
     );
   }
 }

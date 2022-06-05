@@ -18,6 +18,15 @@
           <h3>Created Date: {{ postData.createdDate | date: "long" }}</h3>
           <h3>Details: {{ postData.details }}</h3>
         </mat-card>
+        <button
+          *ngIf="isThePostOwner(post)"
+          style="width: 30%; margin-left: 8px"
+          mat-raised-button
+          color="warn"
+          (click)="deletePost(post.post.post_uuid!)"
+        >
+          Delete Post
+        </button>
       </div>
       <div class="map-content">
         <div class="map" #map></div>

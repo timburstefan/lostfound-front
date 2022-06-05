@@ -7,6 +7,8 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { GeneralService } from 'src/app/services/general.service';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -17,7 +19,12 @@ import { AuthService } from '../../../services/auth.service';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private generalService: GeneralService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -38,10 +45,11 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid)
-      this.authService
-        .register(this.registerForm.value)
-        .subscribe((res) => console.log(res));
-    // console.log(this.registerForm.value);
+      this.authService.register(this.registerForm.value).subscribe((res) => {
+        console.log(res);
+        this.generalService.openSnackBar('Registered succesfully');
+        this.router.navigate(['/home']);
+      });
   }
 
   matchValidator(matchTo: string, reverse?: boolean): ValidatorFn {

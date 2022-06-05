@@ -9,6 +9,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import { LngLat, Map, Marker, NavigationControl } from 'maplibre-gl';
 import { PostModel } from 'src/app/models/models';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-post-details',
@@ -17,6 +18,7 @@ import { PostModel } from 'src/app/models/models';
 })
 export class PostDetailsComponent implements OnInit, AfterViewInit {
   @ViewChild('map') mapContainer!: ElementRef<HTMLElement>;
+  user = JSON.parse(localStorage.getItem('user')!);
   map!: Map;
   imageUrl = '';
   postData: PostModel = {
@@ -32,7 +34,9 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private generalService: GeneralService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -81,6 +85,9 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
       speed: 0.4,
     });
   }
+  isThePostOwner(post: any) {
+    return post.post.user.id === this.user.id;
+  }
   sortPosts() {
     this.nearPosts = this.post.nearPosts.sort(
       (a: any, b: any) => a.distance - b.distance
@@ -91,6 +98,12 @@ export class PostDetailsComponent implements OnInit, AfterViewInit {
     );
   }
 
+  deletePost(id: string) {
+    this.postService.deletePost(id).subscribe((data) => {
+      this.generalService.openSnackBar('Post deleted successfully');
+      this.router.navigate(['/home']);
+    });
+  }
   initData() {
     this.postData.type = '';
     this.postData.name = '';

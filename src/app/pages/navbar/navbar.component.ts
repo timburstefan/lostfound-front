@@ -14,6 +14,7 @@ export class NavbarComponent {
   }
   logout() {
     localStorage.removeItem('currentUserToken');
+    localStorage.removeItem('user');
     this.router.navigate(['/welcome']);
   }
 }

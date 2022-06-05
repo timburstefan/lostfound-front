@@ -9,16 +9,14 @@
         fxFlex.sm="33%"
         *ngFor="let item of foundItems"
       >
-        <mat-card
-          class="mat-elevation-z4"
-          [routerLink]="['/post', item.post.post_uuid]"
-        >
+        <mat-card class="mat-elevation-z4">
           <img
             mat-card-image
             [src]="item.post.image ? item.post.image : 'assets/no_IMAGE.png'"
             height="300px"
             width="100px"
             alt="no data"
+            [routerLink]="['/post', item.post.post_uuid]"
           />
 
           <mat-card-title> {{ item.post.name }}</mat-card-title>

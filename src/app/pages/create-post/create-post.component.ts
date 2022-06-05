@@ -11,7 +11,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LngLat, Map, Marker, NavigationControl } from 'maplibre-gl';
 import { Subscription } from 'rxjs';
-import { GeneralServce } from 'src/app/services/general.service';
+import { GeneralService } from 'src/app/services/general.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -38,7 +38,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
-    private generalService: GeneralServce,
+    private generalService: GeneralService,
     private http: HttpClient
   ) {}
 
@@ -59,7 +59,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.map = new Map({
       container: this.mapContainer.nativeElement,
-      style: `https://api.maptiler.com/maps/streets/style.json?key=57fnrQKKNWkgYkrN1yby`,
+      style: `https://api.maptiler.com/maps/streets/style.json?key=57fnnpm rQKKNWkgYkrN1yby`,
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom,
     });
